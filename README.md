@@ -23,5 +23,5 @@ Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poista
 
 ## Tietokanta
 
-Sovelluksessa käytetään alustavasti viisi(5) tietokantataulua. Määrän kasvattaminen mahdollinen.
+Sovelluksessa käytetään PostgreSQl-tietokantaa. Alustavasti viisi(5) tietokantataulua. Määrän kasvattaminen mahdollinen.
 
