@@ -36,7 +36,8 @@ def login():
     password = request.form["password"]
 
     if users.login(username,password) == False:
-        return redirect("/")
+        flash('Invalid username or password')
+        return redirect('/')
 
     else:
         return redirect("/restaurants")
