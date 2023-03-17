@@ -1,0 +1,8 @@
+Ravintoloiden määrä: {{ count }}
+<hr>
+{% for f in restaurants %}
+{{ f.name }}
+<hr>
+{% endfor %}
+<a href="/logout">Kirjaudu ulos</a>
+<a href="/restaurants">Takaisin</a>  
