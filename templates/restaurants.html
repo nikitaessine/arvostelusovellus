@@ -8,6 +8,10 @@ Ravintoloiden määrä: {{ count }}
 <hr>
 {% for restaurant in restaurants %}
 {{ restaurant.name }}
+<form action="/delete" method="POST">
+    <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+    <input type="submit" value="Delete">
+</form>
 <hr>
 {% endfor %}
 <a href="/new">Lisää ravintola</a>

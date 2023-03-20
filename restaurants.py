@@ -9,3 +9,11 @@ def search_restaurants(substring):
     print(filtered_restaurants)
 
     return filtered_restaurants 
+
+def delete_restaurant(restaurant_id):
+    sql = text("DELETE FROM restaurants WHERE id=:restaurant_id")
+    db.session.execute(sql, {"restaurant_id":restaurant_id})
+    db.session.commit()
+ 
+
+    

@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, flash
 from sqlalchemy.sql import text
 from app import app
 from db import db
-from restaurants import search_restaurants
+from restaurants import search_restaurants, delete_restaurant
 import users
 
 @app.route("/")
@@ -16,7 +16,7 @@ def new():
     
 @app.route("/restaurants")
 def restaurants():
-    result = db.session.execute(text("SELECT name FROM restaurants"))
+    result = db.session.execute(text("SELECT * FROM restaurants"))
     restaurants = result.fetchall()
     return render_template("restaurants.html", count=len(restaurants), restaurants=restaurants) 
 
@@ -61,3 +61,9 @@ def search():
     filtered_restaurants = search_restaurants(substring)
     return render_template('filtered.html', count=len(filtered_restaurants), restaurants=filtered_restaurants)
     
+
+@app.route("/delete", methods=["POST"])
+def delete():
+    restaurant_id = request.form.get('restaurant_id')
+    delete_restaurant(restaurant_id)
+    return redirect("/restaurants")
