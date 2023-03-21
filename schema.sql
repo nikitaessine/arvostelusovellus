@@ -9,3 +9,10 @@ CREATE TABLE restaurants(
     name TEXT
 );
 
+CREATE TABLE reviews (
+    id SERIAL PRIMARY KEY, 
+    user_id INTEGER REFERENCES users, 
+    restaurant_id INTEGER REFERENCES restaurants, 
+    stars INTEGER, 
+    comment TEXT
+);
