@@ -1,7 +1,7 @@
 # Ravintola-arvostelusovellus
 
 Tässä sovelluksessa voi arvostella ravintoloita.
-Ajankohtainen versio [sovelluksesta](https://ravintola-arvostelu.fly.dev/). 
+Tästä pääsee kokeilemaan [sovellusta](https://ravintola-arvostelu.fly.dev/). (ei ajantasalla)
 
 ## Toiminnallisuus
 
