@@ -20,6 +20,12 @@ def restaurants():
     restaurants = result.fetchall()
     return render_template("restaurants.html", count=len(restaurants), restaurants=restaurants) 
 
+@app.route("/user_restaurants")
+def user_restaurants():
+    result = db.session.execute(text("SELECT * FROM restaurants"))
+    restaurants = result.fetchall()
+    return render_template("user_restaurants.html", count=len(restaurants), restaurants=restaurants) 
+
 @app.route("/review", methods=["POST"])
 def reviews():
     result = db.session.execute(text("SELECT * FROM restaurants"))
@@ -42,11 +48,19 @@ def send():
 def login():
     username = request.form["username"]
     password = request.form["password"]
+    admin_or_not = db.session.execute(text("SELECT * FROM users WHERE admin = TRUE"))
+    admins = admin_or_not.fetchall()
+
+    admin_list = []
+    admin_list.append(admins[0][1])
 
     if users.login(username,password) == False:
         flash('Invalid username or password')
         return redirect('/')
 
+    elif username not in admin_list:
+        return redirect("/user_restaurants")
+    
     else:
         return redirect("/restaurants")
 
