@@ -75,7 +75,7 @@ def craete_account():
     password = request.form["password"]
     users.create_account(username,password)
 
-    return redirect("/restaurants")
+    return redirect("/user_restaurants")
 
 @app.route("/search", methods=["POST"])
 def search():
