@@ -25,7 +25,7 @@ Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poista
 
 Sovelluksessa käytetään PostgreSQl-tietokantaa. Alustavasti viisi(5) tietokantataulua. Määrän kasvattaminen mahdollinen.
 
-##Käynnistysohjeet
+## Käynnistysohjeet
 
 Tästä pääsee kokeilemaan [sovellusta](https://ravintola-arvostelu.fly.dev/). (ei ajantasalla). 
 
@@ -58,11 +58,26 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-5. Määritä tietokannan skeema
+5. Käynnistä tietokanta toisessa terminaaliikkunassa
 
 ```bash
-psql < schema.sql
+start-pg.sh
 ```
+6. Alkuperäisessä terminaalikkunassa aja seuraava
+
+```bash
+$ psql
+user=# CREATE DATABASE <tietokannan-nimi>;
+```
+- tietokannan nimi on sama jonka määritit 2.kohdassa
+
+7. Määritä tietokannan skeema
+
+```bash
+ psql -d <tietokannan-nimi> < schema.sql
+```
+- tietokannan nimi on sama jonka määritit 2.kohdassa
+
 6. Käynnistä sovellus
 
 ```bash
