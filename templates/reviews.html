@@ -14,7 +14,8 @@
 
 {% for restaurant in restaurants %}
     <h2>{{ restaurant.name }}</h2>
-    <p>Keskiarvo tähtimäärä: {{ restaurant.avg_stars|round(2) }}</p>
+    <p>Keskiarvo: {{ restaurant.avg_stars|round(2) }}</p>
+    <p>Arvosteluiden määrä: {{ restaurant.review_count }}</p>
     <hr>
     {% for review in restaurant.reviews %}
         <p>{{ review.stars }} tähteä</p>

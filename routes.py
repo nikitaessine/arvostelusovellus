@@ -28,7 +28,7 @@ def user_restaurants():
 
 @app.route("/review")
 def reviews():
-    result = db.session.execute(text("SELECT restaurants.*, AVG(reviews.stars) AS avg_stars FROM restaurants LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id GROUP BY restaurants.id"))
+    result = db.session.execute(text("SELECT restaurants.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.id) AS review_count FROM restaurants LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id GROUP BY restaurants.id"))
     restaurants_all = result.fetchall()
     return render_template("reviews.html", count=len(restaurants_all), restaurants=restaurants_all) 
 
