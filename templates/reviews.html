@@ -14,14 +14,10 @@
 
 {% for restaurant in restaurants %}
     <h2>{{ restaurant.name }}</h2>
-    <p>Keskiarvo: {{ restaurant.avg_stars|round(2) }}</p>
+    <p>Keskiarvo: {{ restaurant.avg_stars|round(2) if restaurant.avg_stars is not none else 0 }}</p>
     <p>Arvosteluiden määrä: {{ restaurant.review_count }}</p>
-    <hr>
-    {% for review in restaurant.reviews %}
-        <p>{{ review.stars }} tähteä</p>
-        <p>{{ review.comment }}</p>
-        <hr>
-    {% endfor %}
+
+
     <form action="/add_review" method="POST">
         Tähdet:
         <select name="stars">
@@ -36,6 +32,11 @@
         <textarea name="comment" rows="3" cols="40" minlength="1" maxlength="500"></textarea>
         <p><input type="submit" value="Lähetä">
         <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+        {% for comment in restaurant.comments %}
+            <div class="comment">
+                <p> {{ comment }}</p>
+            </div>
+        {% endfor %}
     </form>
     <hr>
 {% endfor %}
