@@ -77,6 +77,14 @@ def craete_account():
     if not username or not password:
         flash('Invalid username or password')
         return redirect('/')
+
+    if len(username) < 4:
+        flash('Username should be at least 4 characters')
+        return redirect('/')
+    
+    if len(password) < 6:
+        flash('Username should be at least 6 characters')
+        return redirect('/')
     
     users.create_account(username,password)
 
