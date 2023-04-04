@@ -16,8 +16,8 @@ def delete_restaurant(restaurant_id):
     db.session.commit()
 
 def add_review(user_id, restaurant_id, stars, comment):
-    sql = text("INSERT INTO reviews (restaurant_id, user_id, stars, comment) VALUES (:restaurant_id, :user_id, :stars, :comment")
-    db.session.execute(sql, {"restaurant_id":restaurant_id, "user_id":user_id, "stars":stars, "comment":comment})
+    sql = text("INSERT INTO reviews (restaurant_id, stars, comment) VALUES (:restaurant_id, :stars, :comment)")
+    db.session.execute(sql, {"restaurant_id":restaurant_id, "stars":stars, "comment":comment})
     db.session.commit()
  
 

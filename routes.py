@@ -26,14 +26,25 @@ def user_restaurants():
     restaurants = result.fetchall()
     return render_template("user_restaurants.html", count=len(restaurants), restaurants=restaurants) 
 
-@app.route("/review", methods=["POST"])
+@app.route("/review")
 def reviews():
     result = db.session.execute(text("SELECT * FROM restaurants"))
-    restaurants = result.fetchall()
-    restaurant_id = request.form.get('')
-    return render_template("reviews.html", count=len(restaurants), restaurants=restaurants) 
+    restaurants_all = result.fetchall()
+    return render_template("reviews.html", count=len(restaurants_all), restaurants=restaurants_all) 
 
+@app.route("/add_review", methods=["POST"])
+def reviews_to_db():
+    restaurant_id = request.form.get('restaurant_id')
+    user_id = request.form.get('user_id')
+    stars = request.form.get('stars')
+    comment = request.form.get('comment')
 
+    if not stars:
+        # If stars field is empty, stay on the same page
+        return redirect(request.referrer)
+    
+    add_review(user_id, restaurant_id, stars, comment)
+    return redirect('/review')
 
 @app.route("/send", methods=["POST"])
 def send():

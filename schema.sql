@@ -11,8 +11,7 @@ CREATE TABLE restaurants(
 );
 
 CREATE TABLE reviews (
-    id SERIAL PRIMARY KEY, 
-    user_id INTEGER REFERENCES users, 
+    id SERIAL PRIMARY KEY,  
     restaurant_id INTEGER REFERENCES restaurants, 
     stars INTEGER, 
     comment TEXT

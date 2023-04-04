@@ -16,7 +16,7 @@ Ravintoloiden määrä: {{ count }}
 <hr>
 {% for restaurant in restaurants %}
 {{ restaurant.name }}
-<form action="/review" method="POST">
+<form action="/add_review" method="POST">
     Tähdet:
     <select name="stars">
     <option value="1">1
@@ -30,7 +30,6 @@ Ravintoloiden määrä: {{ count }}
     <textarea name="comment" rows="3" cols="40" minlength="1" maxlength="500"></textarea>
     <p><input type="submit" value="Lähetä">
     <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
-    <input type="hidden" name="user_id" value="{{ user_id }}">
 </form>
 <hr>
 {% endfor %}
