@@ -1,96 +1,90 @@
-/* Style the form */
-form {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  input[type=text] {
-    width: 200px;
-    height: 30px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  
-  input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-  /* Style the restaurant list */
-  .restaurant {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .restaurant h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .review-form {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .review-form select {
-    margin-bottom: 10px;
-  }
-  
-  .review-form textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  
-  .review-form input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .review-form input[type=submit]:hover {
-    background-color: #45a049;
-  }
-  
-  /* Style the horizontal line */
-  hr {
-    margin: 20px;
-    border: none;
-    border-top: 1px solid #ccc;
-  }
-
-  .comment {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
+/* Apply a style to the entire page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: auto;
 }
+
+/* Style the search form */
+form {
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ddd;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style each restaurant card */
+.restaurant-card {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.restaurant-card h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.restaurant-card p {
+  margin: 5px 0;
+}
+
+/* Style the comment form */
+.comment-form {
+  margin-top: 20px;
+  background-color: #eee;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.comment-form select,
+.comment-form textarea,
+.comment-form input[type="submit"] {
+  margin-top: 10px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+.comment-form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style each comment */
+.comment {
+  margin-top: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment:first-child {
+  margin-top: 0;
+}
+
   
