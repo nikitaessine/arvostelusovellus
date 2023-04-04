@@ -12,26 +12,31 @@
 </form>
  
 
-Ravintoloiden määrä: {{ count }}
-<hr>
 {% for restaurant in restaurants %}
-{{ restaurant.name }}
-<form action="/add_review" method="POST">
-    Tähdet:
-    <select name="stars">
-    <option value="1">1
-    <option value="2">2
-    <option value="3">3
-    <option value="4">4
-    <option value="5">5
-    </select>
-    <p>
-    Kommentti:<br>
-    <textarea name="comment" rows="3" cols="40" minlength="1" maxlength="500"></textarea>
-    <p><input type="submit" value="Lähetä">
-    <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
-</form>
-<hr>
+    <h2>{{ restaurant.name }}</h2>
+    <p>Keskiarvo tähtimäärä: {{ restaurant.avg_stars|round(2) }}</p>
+    <hr>
+    {% for review in restaurant.reviews %}
+        <p>{{ review.stars }} tähteä</p>
+        <p>{{ review.comment }}</p>
+        <hr>
+    {% endfor %}
+    <form action="/add_review" method="POST">
+        Tähdet:
+        <select name="stars">
+        <option value="1">1
+        <option value="2">2
+        <option value="3">3
+        <option value="4">4
+        <option value="5">5
+        </select>
+        <p>
+        Kommentti:<br>
+        <textarea name="comment" rows="3" cols="40" minlength="1" maxlength="500"></textarea>
+        <p><input type="submit" value="Lähetä">
+        <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+    </form>
+    <hr>
 {% endfor %}
 
 </body>
