@@ -73,6 +73,11 @@ def logout():
 def craete_account():
     username = request.form["username"]
     password = request.form["password"]
+
+    if not username or not password:
+        flash('Invalid username or password')
+        return redirect('/')
+    
     users.create_account(username,password)
 
     return redirect("/user_restaurants")
