@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, flash
 from sqlalchemy.sql import text
 from app import app
 from db import db
-from restaurants import search_restaurants, delete_restaurant, get_all_restaurants
+from restaurants import search_restaurants, delete_restaurant, get_all_restaurants, add_restaurant
 from reviews import get_reviews, add_review
 import users
 
@@ -12,7 +12,8 @@ def index():
 
 @app.route("/new")
 def new():
-    return render_template("new.html")
+    restaurants = get_all_restaurants()
+    return render_template("new.html", restaurants=restaurants)
 
 @app.route("/restaurants")
 def restaurants():
@@ -44,9 +45,11 @@ def reviews_to_db():
 @app.route("/send", methods=["POST"])
 def send():
     name = request.form["name"]
-    sql = text("INSERT INTO restaurants (name) VALUES (:name)")
-    db.session.execute(sql, {"name":name})
-    db.session.commit()
+    address = request.form["address"]
+    city = request.form["city"]
+
+    add_restaurant(name, address, city)
+    
     return redirect("/restaurants")
 
 
