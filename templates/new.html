@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/static/new.css">
+    <link rel="stylesheet" href="/static/new.css">
 </head>
 <body>
-<form action="/send" method="POST">
-    Ravintolan nimi: <br>
-    <textarea name="name" rows="3" cols="40"></textarea>
-    <br>
-    <input type="submit" value="Lisää">
+    <form action="/send" method="POST">
+        Ravintolan nimi: <br>
+        <textarea name="name" rows="3" cols="40"></textarea>
+        <br>
+        Ravintolan osoite: <br>
+        <input type="text" name="address" size="40" required>
+        <br>
+        Kaupunki: <br>
+        <input type="text" name="city" size="40" required>
+        <br><br>
+        <input type="submit" value="Lisää">
     </form>
-<a href="/restaurants">Takaisin</a>    
+    <a href="/restaurants">Takaisin</a>    
 </body>
 </html>
