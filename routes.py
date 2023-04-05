@@ -57,9 +57,7 @@ def send():
 def login():
     username = request.form["username"]
     password = request.form["password"]
-    admin_or_not = db.session.execute(text("SELECT * FROM users WHERE admin = TRUE"))
-    admins = admin_or_not.fetchall()
-
+    admins = users.check_for_admin_rights()
     admin_list = []
     admin_list.append(admins[0][1])
 

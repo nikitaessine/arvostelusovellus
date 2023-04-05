@@ -44,3 +44,8 @@ def send(name):
     sql = text("INSERT INTO restaurants (name) VALUES (:name)")
     db.session.execute(sql, {"name":name})
     db.session.commit()
+
+def check_for_admin_rights():
+    admin_or_not = db.session.execute(text("SELECT * FROM users WHERE admin = TRUE"))
+    admins = admin_or_not.fetchall()
+    return admins
