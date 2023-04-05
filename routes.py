@@ -2,7 +2,8 @@ from flask import render_template, request, redirect, flash
 from sqlalchemy.sql import text
 from app import app
 from db import db
-from restaurants import search_restaurants, delete_restaurant, add_review, get_all_restaurants
+from restaurants import search_restaurants, delete_restaurant, get_all_restaurants
+from reviews import get_reviews, add_review
 import users
 
 @app.route("/")
@@ -13,7 +14,6 @@ def index():
 def new():
     return render_template("new.html")
 
-    
 @app.route("/restaurants")
 def restaurants():
     restaurants = get_all_restaurants()
@@ -21,14 +21,12 @@ def restaurants():
 
 @app.route("/user_restaurants")
 def user_restaurants():
-    result = db.session.execute(text("SELECT * FROM restaurants"))
-    restaurants = result.fetchall()
+    restaurants = get_all_restaurants()
     return render_template("user_restaurants.html", count=len(restaurants), restaurants=restaurants) 
 
 @app.route("/review")
 def reviews():
-    result = db.session.execute(text("SELECT restaurants.*, AVG(reviews.stars) AS avg_stars, COUNT(reviews.id) AS review_count, array_agg(reviews.comment) AS comments FROM restaurants LEFT JOIN reviews ON restaurants.id = reviews.restaurant_id GROUP BY restaurants.id"))
-    restaurants_all = result.fetchall()
+    restaurants_all = get_reviews()
     return render_template("reviews.html", count=len(restaurants_all), restaurants=restaurants_all) 
 
 @app.route("/add_review", methods=["POST"])
