@@ -92,7 +92,7 @@ def craete_account():
         return redirect('/')
     
     if len(password) < 6:
-        flash('Username should be at least 6 characters')
+        flash('Password should be at least 6 characters')
         return redirect('/')
     
     users.create_account(username,password)
