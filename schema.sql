@@ -23,3 +23,9 @@ CREATE TABLE locations (
   address TEXT,
   city TEXT
 );
+
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  restaurant_id INTEGER REFERENCES restaurants
+);
