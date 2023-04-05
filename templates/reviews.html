@@ -14,6 +14,8 @@
 
 {% for restaurant in restaurants %}
     <h2>{{ restaurant.name }}</h2>
+    <p>Osoite: {{ restaurant.address }}</p>
+    <p>Kaupunki: {{ restaurant.city }}</p>
     <p>Keskiarvo: {{ restaurant.avg_stars|round(2) if restaurant.avg_stars is not none else 0 }}</p>
     <p>Arvosteluiden määrä: {{ restaurant.review_count }}</p>
 
