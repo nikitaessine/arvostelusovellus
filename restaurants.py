@@ -1,4 +1,3 @@
-from flask import abort, session, request
 from sqlalchemy.sql import text
 from db import db
 
@@ -19,6 +18,4 @@ def add_review(restaurant_id, stars, comment):
     sql = text("INSERT INTO reviews (restaurant_id, stars, comment) VALUES (:restaurant_id, :stars, :comment)")
     db.session.execute(sql, {"restaurant_id":restaurant_id, "stars":stars, "comment":comment})
     db.session.commit()
- 
-
     

@@ -1,9 +1,7 @@
-import os
-import re
 from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import db
-from flask import abort, session, request
+from flask import session
 
 def create_account(username, password):
     hash_value = generate_password_hash(password)
@@ -27,14 +25,14 @@ def login(username, password):
     if not user:
         print('ei ole käyttäjää')
         return False
+    
+    hash_value = user.password
+    if check_password_hash(hash_value, password):
+        print('oikea käyttäjä')
     else:
-        hash_value = user.password
-        if check_password_hash(hash_value, password):
-            print('oikea käyttäjä')
-        else:
-            print('väärä salasana')
-            return False
-        session["username"] = username
+        print('väärä salasana')
+        return False
+    session["username"] = username
 
 def logout():
     try:

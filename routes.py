@@ -63,12 +63,12 @@ def login():
     admin_list = []
     admin_list.append(admins[0][1])
 
-    if users.login(username,password) == False:
+    if not users.login(username,password):
         flash('Invalid username or password')
         return redirect('/')
 
-    elif username not in admin_list:
-        return redirect("/user_restaurants")
+    if username not in admin_list:
+       return redirect("/user_restaurants")
     
     else:
         return redirect("/restaurants")
