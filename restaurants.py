@@ -1,6 +1,11 @@
 from sqlalchemy.sql import text
 from db import db
 
+
+def get_all_restaurants():
+    result = db.session.execute(text("SELECT * FROM restaurants"))
+    return result.fetchall()
+
 def search_restaurants(substring):
     sql = text("SELECT * FROM restaurants WHERE LOWER(name) LIKE '%' || LOWER(:substring) || '%'")
     result = db.session.execute(sql, {"substring":substring})

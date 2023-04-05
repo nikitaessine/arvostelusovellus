@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, flash
 from sqlalchemy.sql import text
 from app import app
 from db import db
-from restaurants import search_restaurants, delete_restaurant, add_review
+from restaurants import search_restaurants, delete_restaurant, add_review, get_all_restaurants
 import users
 
 @app.route("/")
@@ -16,8 +16,7 @@ def new():
     
 @app.route("/restaurants")
 def restaurants():
-    result = db.session.execute(text("SELECT * FROM restaurants"))
-    restaurants = result.fetchall()
+    restaurants = get_all_restaurants()
     return render_template("restaurants.html", count=len(restaurants), restaurants=restaurants) 
 
 @app.route("/user_restaurants")
