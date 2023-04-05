@@ -1,6 +1,7 @@
 # Ravintola-arvostelusovellus
 
 Tässä sovelluksessa voi lisätä ja arvostella ravintoloita.
+Sovellus on koodattu käyttäen Python:in Flask-kirjastoa.
 
 ## Toiminnallisuus
 
@@ -26,6 +27,16 @@ Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poista
 ## Tietokanta
 
 Sovelluksessa käytetään PostgreSQl-tietokantaa. Alustavasti viisi(5) tietokantataulua. Määrän kasvattaminen mahdollinen.
+
+## Tietoturva
+
+Sovelluksessa SQL-komennot käyttävät parametreja, mikä estää SQL-injektiot.
+
+XSS-haavoittuvuus suljetaan pois käyttämällä Flaskin sivupohjia. Esim:
+
+```bash
+return render_template("new.html", restaurants=restaurants)
+```
 
 ## Käynnistysohjeet
 
