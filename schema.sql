@@ -16,3 +16,10 @@ CREATE TABLE reviews (
     stars INTEGER, 
     comment TEXT
 );
+
+CREATE TABLE locations (
+  id SERIAL PRIMARY KEY,
+  restaurant_id INTEGER REFERENCES restaurants,
+  address TEXT,
+  city TEXT
+);
