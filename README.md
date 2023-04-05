@@ -1,15 +1,17 @@
 # Ravintola-arvostelusovellus
 
-Tässä sovelluksessa voi arvostella ravintoloita.
+Tässä sovelluksessa voi lisätä ja arvostella ravintoloita.
 
 ## Toiminnallisuus
 
-- Käyttäjätilin luonti
-- Kirjautuminen
-- Arvosteluiden selaaminen
-- Arvostelun lisääminen
+- Käyttäjätilin luonti(toimii)
+- Kirjautuminen(toimii)
+- Ravintolan lisääminen(toimii)
+- Arvosteluiden selaaminen(toimii)
+- Arvostelun lisääminen(toimii)
 - Arvostelun poistaminen
 - Moderaattori voi poistaa muiden arvosteluita
+- Moderaattoi voi poistaa ravintolan(toimii)
 
 ## Käyttäjät 
 
@@ -18,8 +20,8 @@ On kaksi erilaista käyttäjtyyppiä.
 - Peruskäyttäjä
 - Ylläpitäjä
 
-Peruskäyttäjä voi tarkastella kaikkien arvosteluja. Lisätä ja poistaa omia arvosteluita.
-Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poistaa muiden arvosteluita, jos ovat epäasiallisia.
+Peruskäyttäjä voi tarkastella kaikkien arvosteluja. Lisätä arvosteluita.
+Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poistaa muiden arvosteluita tai ravintolalisäyksiä, jos ovat epäasiallisia.
 
 ## Tietokanta
 
@@ -27,7 +29,7 @@ Sovelluksessa käytetään PostgreSQl-tietokantaa. Alustavasti viisi(5) tietokan
 
 ## Käynnistysohjeet
 
-Tästä pääsee kokeilemaan [sovellusta](https://ravintola-arvostelu.fly.dev/). (ei ajantasalla). 
+Tästä pääsee kokeilemaan [sovellusta](https://ravintola-arvostelu.fly.dev/). (ei toimi). 
 
 Paikallisesti sovelluksen saa toimimaan seuraavasti:
 
