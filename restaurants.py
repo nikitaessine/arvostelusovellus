@@ -27,6 +27,13 @@ def delete_restaurant(restaurant_id):
 
 
 def add_restaurant(name, address, city, categories):
+    check_for_name = text("SELECT * FROM restaurants WHERE name = :name")
+
+    existing_restaurant = db.session.execute(check_for_name, {"name": name}).fetchone()
+    if existing_restaurant:
+        print('ollaa ifis')
+        return False
+
     sql1 = text("INSERT INTO restaurants (name) VALUES (:name)")
     db.session.execute(sql1, {"name": name})
     restaurant_id = db.session.execute(text("SELECT currval('restaurants_id_seq')")).fetchone()[0]
@@ -36,4 +43,6 @@ def add_restaurant(name, address, city, categories):
     sql3 = text("INSERT INTO categories (category, restaurant_id) VALUES (:name, :restaurant_id)")
     db.session.execute(sql3, {"name": categories, "restaurant_id": restaurant_id})
     db.session.commit()
+
+    return True
     

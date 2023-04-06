@@ -49,9 +49,11 @@ def send():
     city = request.form["city"]
     categories = request.form.get('categories')
 
-    add_restaurant(name, address, city, categories)
-    
-    return redirect("/restaurants")
+    if add_restaurant(name, address, city, categories):
+        return redirect("/restaurants")
+    else:
+        message = "Restaurant with name {} already exists".format(name)
+        return render_template("new.html", message=message)
 
 
 @app.route("/login",methods=["POST"])
