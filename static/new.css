@@ -40,3 +40,14 @@ form {
   a:hover {
     text-decoration: underline;
   }
+
+
+#flash {
+  margin-top: 20px;
+padding: 10px;
+border-radius: 5px;
+color: #c81224;
+background-color: #d4edda;
+border: 1px solid #c3e6cb;
+text-align: center;
+}

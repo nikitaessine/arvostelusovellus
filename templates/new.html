@@ -23,6 +23,14 @@
         <br><br>
         <input type="submit" value="Lisää">
     </form>
+    {% if message %}
+    <div id="flash" class="alert alert-success">
+        {{ message }}
+    </div>  
+    {% endif %}
+    <script> setTimeout(function() {
+        document.getElementById('flash').style.display = 'none';
+      }, 3000);</script>
     <a href="/restaurants">Takaisin</a>    
 </body>
 </html>
