@@ -47,8 +47,9 @@ def send():
     name = request.form["name"]
     address = request.form["address"]
     city = request.form["city"]
+    categories = request.form.get('categories')
 
-    add_restaurant(name, address, city)
+    add_restaurant(name, address, city, categories)
     
     return redirect("/restaurants")
 

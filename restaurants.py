@@ -26,12 +26,14 @@ def delete_restaurant(restaurant_id):
     db.session.commit()
 
 
-def add_restaurant(name, address, city):
+def add_restaurant(name, address, city, categories):
     sql1 = text("INSERT INTO restaurants (name) VALUES (:name)")
     db.session.execute(sql1, {"name": name})
     restaurant_id = db.session.execute(text("SELECT currval('restaurants_id_seq')")).fetchone()[0]
     sql2 = text("INSERT INTO locations (restaurant_id, address, city) VALUES (:restaurant_id, :address, :city)")
     db.session.execute(sql2, {"restaurant_id": restaurant_id, "address": address, "city": city})
-    
+
+    sql3 = text("INSERT INTO categories (category, restaurant_id) VALUES (:name, :restaurant_id)")
+    db.session.execute(sql3, {"name": categories, "restaurant_id": restaurant_id})
     db.session.commit()
     
