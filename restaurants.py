@@ -44,7 +44,7 @@ def add_restaurant(name, address, city, categories):
     sql2 = text("INSERT INTO locations (restaurant_id, address, city) VALUES (:restaurant_id, :address, :city)")
     db.session.execute(sql2, {"restaurant_id": restaurant_id, "address": address, "city": city})
 
-    sql3 = text("INSERT INTO categories (category, restaurant_id) VALUES (:name, :restaurant_id)")
+    sql3 = text("INSERT INTO categories (name, restaurant_id) VALUES (:name, :restaurant_id)")
     db.session.execute(sql3, {"name": categories, "restaurant_id": restaurant_id})
     db.session.commit()
 

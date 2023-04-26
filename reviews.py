@@ -2,7 +2,7 @@ from sqlalchemy.sql import text
 from db import db
 
 def get_reviews():
-    result = db.session.execute(text("SELECT restaurants.*, locations.address, locations.city, categories.category,\
+    result = db.session.execute(text("SELECT restaurants.*, locations.address, locations.city, categories.name,\
                                     AVG(reviews.stars) AS avg_stars, COUNT(reviews.id) AS review_count,\
                                     array_agg(reviews.comment) AS comments FROM restaurants \
                                     LEFT JOIN locations ON restaurants.id = locations.restaurant_id \
