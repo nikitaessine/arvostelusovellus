@@ -5,7 +5,7 @@ Sovellus on koodattu käyttäen Python:in Flask-kirjastoa.
 
 ## Toiminnallisuus
 
-- Käyttäjätilin luonti(toimii)
+- Käyttäjätilin luonti(toimii, mutta ei admin käyttäjiä atm)
 - Kirjautuminen(toimii)
 - Ravintolan lisääminen(toimii)
 - Arvosteluiden selaaminen(toimii)
