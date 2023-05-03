@@ -27,11 +27,9 @@ def login(username, password):
         return False
     
     hash_value = user.password
-    if check_password_hash(hash_value, password):
-        print('oikea käyttäjä')
-    else:
-        print('väärä salasana')
+    if not check_password_hash(hash_value, password):
         return False
+
     session["username"] = username
 
 def logout():
