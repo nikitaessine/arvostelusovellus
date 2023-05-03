@@ -32,12 +32,20 @@
 <b>Tai luo käyttäjä</b>
 
 <form action="/create_account" method="POST">
-    <p>Tunnus:<br>
-    <input type="text" name="username"></p>
-    <p>Salasana:<br>
-    <input type="password" name="password"></p>
-    <input type="submit" value="Luo käyttäjä">
-    </form>
+  <p>Tunnus:<br>
+  <input type="text" name="username"></p>
+  
+  <p>Salasana:<br>
+  <input type="password" name="password"></p>
+  
+  <p>Onko uusi käyttäjä ylläpitäjä?</p>
+  <input type="checkbox" name="is_admin">
+  
+  <br><br>
+  
+  <input type="submit" value="Luo käyttäjä">
+</form>
+
 
 
 </body>
