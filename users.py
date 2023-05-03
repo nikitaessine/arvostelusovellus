@@ -1,19 +1,26 @@
 from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import db
-from flask import session
+from flask import session, request
 
 def create_account(username, password):
-    hash_value = generate_password_hash(password)
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        is_admin = request.form.get('is_admin') == 'on'
+        print(is_admin)
 
-    try:
-        sql = text("INSERT INTO users (username, password) VALUES (:username, :password)")
-        db.session.execute(sql, {"username":username, "password":hash_value})
-        db.session.commit()
-        session["username"] = username
-    
-    except:
-        return False
+        hash_value = generate_password_hash(password)
+
+        try:
+            sql = text("INSERT INTO users (username, password, admin) VALUES (:username, :password, :admin)")
+            db.session.execute(sql, {"username":username, "password":hash_value, "admin":is_admin})
+            db.session.commit()
+            session["username"] = username
+            
+        
+        except:
+            return "Error creating account."
     
     return login(username,password)
 
