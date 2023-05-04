@@ -63,7 +63,7 @@ def send():
 def login():
     username = request.form["username"]
     password = request.form["password"]
-    
+
     if users.login(username,password) == False:
         flash('Invalid username or password')
         return redirect('/')
@@ -82,15 +82,15 @@ def craete_account():
     password = request.form["password"]
 
     if not username or not password:
-        flash('Invalid username or password')
+        flash('Väärä käyttäjä tai salasana')
         return redirect('/')
 
     if len(username) < 4:
-        flash('Username should be at least 4 characters')
+        flash('Käyttäjänimen täytyy olla vähintään 4 merkkiä')
         return redirect('/')
     
     if len(password) < 6:
-        flash('Password should be at least 6 characters')
+        flash('Salasanan täytyy olla vähintään 6 merkkiä')
         return redirect('/')
     
     users.create_account(username,password)
