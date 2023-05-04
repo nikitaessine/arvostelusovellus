@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, flash
+from flask import render_template, request, redirect, flash, session, abort
 from sqlalchemy.sql import text
 from app import app
 from db import db
@@ -36,6 +36,9 @@ def reviews_to_db():
     stars = request.form.get('stars')
     comment = request.form.get('comment')
 
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+
     if not stars:
         return redirect(request.referrer)
     
@@ -49,12 +52,14 @@ def send():
     city = request.form["city"]
     categories = request.form.get('categories')
 
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
+
     if add_restaurant(name, address, city, categories):
         return redirect("/restaurants")
     else:
         message = "Restaurant with name {} already exists".format(name)
         return render_template("new.html", message=message)
-
 
 @app.route("/login",methods=["POST"])
 def login():
@@ -109,6 +114,8 @@ def search():
 
 @app.route("/delete", methods=["POST"])
 def delete():
+    if session["csrf_token"] != request.form["csrf_token"]:
+        abort(403)
     restaurant_id = request.form.get('restaurant_id')
     delete_restaurant(restaurant_id)
     return redirect("/restaurants")

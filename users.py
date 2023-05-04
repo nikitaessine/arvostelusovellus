@@ -2,6 +2,7 @@ from sqlalchemy.sql import text
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import db
 from flask import session, request
+import secrets
 
 def create_account(username, password):
     if request.method == 'POST':
@@ -11,11 +12,13 @@ def create_account(username, password):
         print(is_admin)
 
         hash_value = generate_password_hash(password)
+        csrf_token = secrets.token_hex(16)
 
         try:
             sql = text("INSERT INTO users (username, password, admin) VALUES (:username, :password, :admin)")
             db.session.execute(sql, {"username":username, "password":hash_value, "admin":is_admin})
             db.session.commit()
+            session['csrf_token'] = csrf_token
             session["username"] = username
             
         
@@ -37,6 +40,8 @@ def login(username, password):
     if not check_password_hash(hash_value, password):
         return False
 
+    csrf_token = secrets.token_hex(16)
+    session['csrf_token'] = csrf_token
     session["username"] = username
 
 def logout():

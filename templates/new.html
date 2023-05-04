@@ -5,6 +5,7 @@
 </head>
 <body>
     <form action="/send" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
         Ravintolan nimi: <br>
         <textarea name="name" rows="3" cols="40"></textarea>
         <br>

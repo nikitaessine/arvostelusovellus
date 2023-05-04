@@ -32,6 +32,7 @@
     <p>Arvosteluiden määrä: {{ restaurant.review_count }}</p>
 
     <form action="/add_review" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
         Tähdet:
         <select name="stars">
             <option value="1">1
