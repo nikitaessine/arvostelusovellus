@@ -9,7 +9,6 @@ def create_account(username, password):
         username = request.form['username']
         password = request.form['password']
         is_admin = request.form.get('is_admin') == 'on'
-        print(is_admin)
 
         hash_value = generate_password_hash(password)
         csrf_token = secrets.token_hex(16)
@@ -33,7 +32,6 @@ def login(username, password):
     user = result.fetchone()
 
     if not user:
-        print('ei ole käyttäjää')
         return False
     
     hash_value = user.password
@@ -59,3 +57,10 @@ def check_for_admin_rights():
     admin_or_not = db.session.execute(text("SELECT * FROM users WHERE admin = TRUE"))
     admins = admin_or_not.fetchall()
     return admins
+
+def admins(username):
+    admins = check_for_admin_rights() 
+    for i in admins:
+        if i[1] == username:
+            return True
+    return False

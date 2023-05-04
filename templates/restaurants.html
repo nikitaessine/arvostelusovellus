@@ -17,11 +17,14 @@
     <hr>
     {% for restaurant in restaurants %}
     {{ restaurant.name }}
+    {% if is_admin %}
     <form action="/delete" method="POST">
       <input type="hidden" name="csrf_token" value="{{ session['csrf_token'] }}">
       <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
       <input type="submit" value="Delete">
     </form>
+    <hr>
+    {% endif %}
     <hr>
     {% endfor %}
     <a href="/new">Lisää ravintola</a>

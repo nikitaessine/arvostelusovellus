@@ -17,13 +17,11 @@ def new():
 
 @app.route("/restaurants")
 def restaurants():
+    username = session['username']
     restaurants = get_all_restaurants()
-    return render_template("restaurants.html", count=len(restaurants), restaurants=restaurants) 
-
-@app.route("/user_restaurants")
-def user_restaurants():
-    restaurants = get_all_restaurants()
-    return render_template("user_restaurants.html", count=len(restaurants), restaurants=restaurants) 
+    is_admin = users.admins(username)
+    return render_template("restaurants.html", count=len(restaurants), restaurants=restaurants, is_admin = is_admin) 
+ 
 
 @app.route("/review")
 def reviews():
@@ -65,16 +63,10 @@ def send():
 def login():
     username = request.form["username"]
     password = request.form["password"]
-    admins = users.check_for_admin_rights()
-    admin_list = []
-    admin_list.append(admins[0][1])
-
+    
     if users.login(username,password) == False:
         flash('Invalid username or password')
         return redirect('/')
-
-    if username not in admin_list:
-       return redirect("/user_restaurants")
     
     else:
         return redirect("/restaurants")
@@ -103,7 +95,7 @@ def craete_account():
     
     users.create_account(username,password)
 
-    return redirect("/user_restaurants")
+    return redirect('/restaurants')
 
 @app.route("/search", methods=["POST"])
 def search():
