@@ -24,8 +24,8 @@
 </form>
 
 {% for restaurant in restaurants %}
-    <h2>{{ restaurant.name }}</h2>
-    <p>Kategoria: {{ restaurant.category }}</p>
+    <h2>{{ restaurant[1] }}</h2>
+    <p>Kategoria: {{ restaurant[4] }}</p>
     <p>Osoite: {{ restaurant.address }}</p>
     <p>Kaupunki: {{ restaurant.city }}</p>
     <p>Keskiarvo: {{ restaurant.avg_stars|round(2) if restaurant.avg_stars is not none else 0 }}</p>
