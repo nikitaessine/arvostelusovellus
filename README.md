@@ -5,13 +5,11 @@ Sovellus on koodattu käyttäen Python:in Flask-kirjastoa.
 
 ## Toiminnallisuus
 
-- Käyttäjätilin luonti(toimii, mutta ei admin käyttäjiä atm)
+- Käyttäjätilin luonti(toimii)
 - Kirjautuminen(toimii)
 - Ravintolan lisääminen(toimii)
 - Arvosteluiden selaaminen(toimii)
 - Arvostelun lisääminen(toimii)
-- Arvostelun poistaminen
-- Moderaattori voi poistaa muiden arvosteluita
 - Moderaattoi voi poistaa ravintolan(toimii)
 
 ## Käyttäjät 
@@ -22,11 +20,11 @@ On kaksi erilaista käyttäjtyyppiä.
 - Ylläpitäjä
 
 Peruskäyttäjä voi tarkastella kaikkien arvosteluja. Lisätä arvosteluita.
-Ylläpitäjä(moderaattori) peruskäyttäjätoiminnalisuuden lisäksi voi poistaa muiden arvosteluita tai ravintolalisäyksiä, jos ovat epäasiallisia.
+Ylläpitäjä voi poistaa ravintoloita.
 
 ## Tietokanta
 
-Sovelluksessa käytetään PostgreSQl-tietokantaa. Alustavasti viisi(5) tietokantataulua. Määrän kasvattaminen mahdollinen.
+Sovelluksessa käytetään PostgreSQl-tietokantaa. Viisi tietokantataulua käytössä.
 
 ## Tietoturva
 
