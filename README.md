@@ -37,6 +37,20 @@ XSS-haavoittuvuus suljetaan pois käyttämällä Flaskin sivupohjia. Esim:
 ```bash
 return render_template("new.html", restaurants=restaurants)
 ```
+CSRF-haavoittuvuus suljetaan pois generoimalla tokeneita sessioihin
+
+```bash
+csrf_token = secrets.token_hex(16)
+session['csrf_token'] = csrf_token
+```
+
+ja tarkastamalla tokeni ennen sivulle menemistä 
+
+```bash
+if session["csrf_token"] != request.form["csrf_token"]:
+    abort(403)
+
+```
 
 ## Käynnistysohjeet
 
